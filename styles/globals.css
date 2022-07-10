@@ -1,7 +1,25 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "BioRhyme";
+  font-weight: 600;
+  font-size: 16px;
+  transition: box-shadow 0.15s ease-in-out;
+  -webkit-transition: box-shadow 0.15s ease-in-out;
+  -moz-transition: box-shadow 0.15s ease-in-out;
+  -ms-transition: box-shadow 0.15s ease-in-out;
+  -o-transition: box-shadow 0.15s ease-in-out;
+}
+
 html,
 body {
-  padding: 0;
-  margin: 0;
+  scroll-behavior: smooth;
+  width: 100vw;
+  min-height: 100vh;
+  background: var(--bg-primary);
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
@@ -9,8 +27,22 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+  outline: 0;
+  padding: 3px;
+  border-radius: 4px;
 }
 
-* {
-  box-sizing: border-box;
+*:focus-visible {
+  box-shadow: 0 0 0 4px var(--selected) !important;
+  border-radius: 4px;
+}
+
+:root {
+  --bg-primary: #eae2d7;
+  --bg-secondary: #d8cab6;
+  --bg-tertiary: #c3ad8f;
+  --text-primary: #252525;
+  --text-secondary: #4d4d4d;
+  --text-muted: #9e9e9e;
+  --selected: rgb(195, 156, 120);
 }

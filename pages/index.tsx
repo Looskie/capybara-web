@@ -216,16 +216,14 @@ const Home: NextPage = () => {
     <Wrapper>
       <Head>
         <title>Home - capy.lol</title>
-        <div>
-          <meta property="og:type" content="website" />
-          <meta property="og:site_name" content="capy.lol" />
-          <meta property="og:title" content="Capybara API" />
-          <meta
-            property="og:description"
-            content="The next generation of capybara APIs, access over 700+ images of capybaras in high definition in under < 40ms."
-          />
-          <meta name="twitter:creator" content="@devlooskie" />
-        </div>
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="capy.lol" />
+        <meta property="og:title" content="Capybara API" />
+        <meta
+          property="og:description"
+          content="The next generation of capybara APIs, access over 700+ images of capybaras in high definition in under < 40ms."
+        />
+        <meta name="twitter:creator" content="@devlooskie" />
       </Head>
       <Navbar />
       <Landing id="#">

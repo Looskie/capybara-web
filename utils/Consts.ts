@@ -53,10 +53,4 @@ after Capybara api: :ChocolaPOGGERS:`,
     pfp: "/img/ari.png",
     worksAt: "Buildergroop Corporation",
   },
-  {
-    message: "man capybara api be bussin yo this mf gon replace your enterprise-grade fancy ass graphql apis. p.s shoutout to my co-founder ari this dude gets it too yo capybara shit eating ritual mad healthy might partake one day.",
-    name: "Aaryaman Maheshwari",
-    worksAt: "Buildergroop Corporation",
-    pfp: "/img/aaryaman.png"
-   }
 ];

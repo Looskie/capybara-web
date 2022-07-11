@@ -11,6 +11,7 @@ import {
 import Image from "next/image";
 import CopyToClipboard from "react-copy-to-clipboard";
 import { toast } from "react-toastify";
+import Head from "next/head";
 
 const Wrapper = styled.div`
   display: flex;
@@ -213,6 +214,19 @@ const Request = styled.div`
 const Home: NextPage = () => {
   return (
     <Wrapper>
+      <Head>
+        <title>Home - capy.lol</title>
+        <div>
+          <meta property="og:type" content="website" />
+          <meta property="og:site_name" content="capy.lol" />
+          <meta property="og:title" content="Capybara API" />
+          <meta
+            property="og:description"
+            content="The next generation of capybara APIs, access over 700+ images of capybaras in high definition in under < 40ms."
+          />
+          <meta name="twitter:creator" content="@devlooskie" />
+        </div>
+      </Head>
       <Navbar />
       <Landing id="#">
         <div>

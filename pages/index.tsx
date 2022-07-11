@@ -99,6 +99,9 @@ const TextBtn = styled.button`
 `;
 
 const CodeContainerBtn = styled.button`
+  position: absolute;
+  right: -20px;
+  bottom: -18px;
   outline: none;
   border: unset;
   color: var(--text-primary);
@@ -120,6 +123,7 @@ const CodeContainerBtn = styled.button`
 `;
 
 const CodeContainer = styled.div`
+  position: relative;
   align-self: center;
   justify-self: center;
   display: flex;
@@ -130,7 +134,6 @@ const CodeContainer = styled.div`
   width: 100%;
   height: 100%;
   max-width: 500px;
-  overflow: auto;
 
   span {
     user-select: none;
@@ -229,8 +232,9 @@ const Home: NextPage = () => {
         </div>
         <div>
           <CodeContainer>
-            <pre>
-              {`~ curl 'https://api.capy.lol/v1/capybara?json=true' \\
+            <div style={{ overflow: "auto" }}>
+              <pre>
+                {`~ curl 'https://api.capy.lol/v1/capybara?json=true' \\
    -H 'authority: api.capy.lol' \\
    -H 'accept: */*' \\
    -H 'accept-language: en-US,en;q=0.9' \\
@@ -242,13 +246,13 @@ const Home: NextPage = () => {
    -H 'sec-fetch-site: cross-site' \\
    -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36' \\
    --compressed`}
-              <br />
-              <br />
-            </pre>
-          </CodeContainer>
-          <CopyToClipboard
-            onCopy={() => toast("Copied", { type: "success" })}
-            text={`
+                <br />
+                <br />
+              </pre>
+            </div>
+            <CopyToClipboard
+              onCopy={() => toast("Copied", { type: "success" })}
+              text={`
             curl 'https://api.capy.lol/v1/capybara?json=true' \\
    -H 'authority: api.capy.lol' \\
    -H 'accept: */*' \\
@@ -262,9 +266,10 @@ const Home: NextPage = () => {
    -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36' \\
    --compressed
           `}
-          >
-            <CodeContainerBtn>try it for yourself</CodeContainerBtn>
-          </CopyToClipboard>
+            >
+              <CodeContainerBtn>try it for yourself</CodeContainerBtn>
+            </CopyToClipboard>
+          </CodeContainer>
         </div>
       </Landing>
       <Marquee

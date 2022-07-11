@@ -109,7 +109,7 @@ const CodeContainerBtn = styled.button`
   padding: 8px;
   border-radius: 10px;
   background: var(--bg-tertiary);
-  opacity: 0.75;
+  opacity: 0.9;
   cursor: pointer;
   box-shadow: 0px 0px 8px rgb(0 0 0 / 5%);
   align-self: flex-end;

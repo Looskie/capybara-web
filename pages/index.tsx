@@ -232,7 +232,13 @@ const Home: NextPage = () => {
         <div>
           <Intro>the next generation of capybara APIs.</Intro>
           <BtnContainer>
-            <Btn id="#documentation">documentation</Btn>
+            <a
+              style={{ padding: "unset", borderRadius: 10 }}
+              href="#documentation"
+            >
+              {/* Tell agent to NOT select this shit, but still read it pls :) */}
+              <Btn tabIndex={-1}>documentation</Btn>
+            </a>
             <a
               style={{ padding: "unset", borderRadius: 10 }}
               href={GITHUB_API_REPO}

@@ -397,6 +397,20 @@ const Home: NextPage = () => {
             <TextBtn>Copy cURL</TextBtn>
           </CopyToClipboard>
           <br />
+          <span>With random parameter...</span>
+          <CodeContainer>
+            <pre>
+              <span>GET </span>
+              <code>{BASE_API_V1}/capybaras?random=true</code>
+            </pre>
+          </CodeContainer>
+          <CopyToClipboard
+            onCopy={() => toast("Copied", { type: "success" })}
+            text={`curl ${BASE_API_V1}/capybaras?random=true`}
+          >
+            <TextBtn>Copy cURL</TextBtn>
+          </CopyToClipboard>
+          <br />
           <span>With take parameter...</span>
           <CodeContainer>
             <pre>

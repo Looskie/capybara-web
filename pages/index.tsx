@@ -168,6 +168,8 @@ const Testimonial = styled.div`
   > div {
     > div {
       p {
+        line-height: 1;
+        margin: 5px 0;
         color: var(--text-primary);
 
         span {

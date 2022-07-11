@@ -14,80 +14,36 @@ export const TWITTER = "https://twitter.com/devlooskie";
 
 export const TESTIMONIALS: Testimonial[] = [
   {
+    message: `before Capybara api: :TrollDespair: 
+after Capybara api: :ChocolaPOGGERS:`,
+    name: "Phineas",
+    pfp: "/img/phineas.png",
+    worksAt: "nyanpasu",
+  },
+  {
+    message: "api goes hard no cap on the track 🧢 ❌",
+    name: "Robert",
+    pfp: "/img/roprt.png",
+    worksAt: "Milf Hunter",
+  },
+  {
     message:
-      " Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reiciendis voluptatibus natus blanditiis provident eveniet rerum distinctio obcaecati facere accusantium minus.",
-    name: "username",
-    pfp: "https://api.capy.lol/v1/capybara",
+      "A phenomenal implementation of an image delivery system with no downtime and 99.9999% uptime SLA guaranteed that suits all of my needs",
+    name: "pxseu",
+    pfp: "/img/pxseu.png",
     worksAt: "Hop inc.",
   },
   {
     message:
-      " Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reiciendis voluptatibus natus blanditiis provident eveniet rerum distinctio obcaecati facere accusantium minus.",
-    name: "username",
-    pfp: "https://api.capy.lol/v1/capybara",
-    worksAt: "Hop inc.",
+      "I 100% recommend cody's capybara api as it has the largest variety of capybara's on the entire internet and more capy's are being added every day!",
+    name: "hexiro",
+    pfp: "/img/hexiro.png",
+    worksAt: "Southern Produced",
   },
   {
-    message:
-      " Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reiciendis voluptatibus natus blanditiis provident eveniet rerum distinctio obcaecati facere accusantium minus.",
-    name: "username",
-    pfp: "https://api.capy.lol/v1/capybara",
-    worksAt: "Hop inc.",
-  },
-  {
-    message:
-      " Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reiciendis voluptatibus natus blanditiis provident eveniet rerum distinctio obcaecati facere accusantium minus.",
-    name: "username",
-    pfp: "https://api.capy.lol/v1/capybara",
-    worksAt: "Hop inc.",
-  },
-  {
-    message:
-      " Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reiciendis voluptatibus natus blanditiis provident eveniet rerum distinctio obcaecati facere accusantium minus.",
-    name: "username",
-    pfp: "https://api.capy.lol/v1/capybara",
-    worksAt: "Hop inc.",
-  },
-  {
-    message:
-      " Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reiciendis voluptatibus natus blanditiis provident eveniet rerum distinctio obcaecati facere accusantium minus.",
-    name: "username",
-    pfp: "https://api.capy.lol/v1/capybara",
-    worksAt: "Hop inc.",
-  },
-  {
-    message:
-      " Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reiciendis voluptatibus natus blanditiis provident eveniet rerum distinctio obcaecati facere accusantium minus.",
-    name: "username",
-    pfp: "https://api.capy.lol/v1/capybara",
-    worksAt: "Hop inc.",
-  },
-  {
-    message:
-      " Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reiciendis voluptatibus natus blanditiis provident eveniet rerum distinctio obcaecati facere accusantium minus.",
-    name: "username",
-    pfp: "https://api.capy.lol/v1/capybara",
-    worksAt: "Hop inc.",
-  },
-  {
-    message:
-      " Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reiciendis voluptatibus natus blanditiis provident eveniet rerum distinctio obcaecati facere accusantium minus.",
-    name: "username",
-    pfp: "https://api.capy.lol/v1/capybara",
-    worksAt: "Hop inc.",
-  },
-  {
-    message:
-      " Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reiciendis voluptatibus natus blanditiis provident eveniet rerum distinctio obcaecati facere accusantium minus.",
-    name: "username",
-    pfp: "https://api.capy.lol/v1/capybara",
-    worksAt: "Hop inc.",
-  },
-  {
-    message:
-      " Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reiciendis voluptatibus natus blanditiis provident eveniet rerum distinctio obcaecati facere accusantium minus.",
-    name: "username",
-    pfp: "https://api.capy.lol/v1/capybara",
-    worksAt: "Hop inc.",
+    message: "best api cuz they do be pulling up in a quick efficient manner.",
+    name: "shinkuWRLD",
+    pfp: "/img/shinku.png",
+    worksAt: "ur moms house",
   },
 ];

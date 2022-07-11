@@ -10,6 +10,7 @@ import {
 } from "../utils/Consts";
 import Image from "next/image";
 import CopyToClipboard from "react-copy-to-clipboard";
+import { toast } from "react-toastify";
 
 const Wrapper = styled.div`
   display: flex;
@@ -29,11 +30,17 @@ const Landing = styled.div`
     display: flex;
     flex-direction: column;
     flex: 1;
+
+    &:nth-child(2) {
+      @media (max-width: 1120px) {
+        display: none;
+      }
+    }
   }
 `;
 
 const Intro = styled.h1`
-  max-width: 15ch;
+  max-width: 13ch;
   font-size: 3em;
   font-weight: bold;
   line-height: 1.35;
@@ -144,10 +151,11 @@ const Testimonials = styled.div`
 
 const Testimonial = styled.div`
   display: flex;
-  max-width: 400px;
+  width: 400px;
   background: var(--bg-secondary);
   padding: 12px;
   border-radius: 12px;
+  box-shadow: 0px 0px 8px rgb(0 0 0 / 12%);
 
   &:first-of-type {
     margin-left: 20px;
@@ -205,12 +213,14 @@ const Home: NextPage = () => {
       <Navbar />
       <Landing id="#">
         <div>
-          <Intro>The next generation of capybara APIs.</Intro>
+          <Intro>the next generation of capybara APIs.</Intro>
           <BtnContainer>
             <Btn id="#documentation">documentation</Btn>
             <a
               style={{ padding: "unset", borderRadius: 10 }}
               href={GITHUB_API_REPO}
+              target="_blank"
+              rel="noreferrer"
             >
               {/* Tell agent to NOT select this shit, but still read it pls :) */}
               <Btn tabIndex={-1}>source</Btn>
@@ -236,7 +246,25 @@ const Home: NextPage = () => {
               <br />
             </pre>
           </CodeContainer>
-          <CodeContainerBtn>Try for yourself</CodeContainerBtn>
+          <CopyToClipboard
+            onCopy={() => toast("Copied", { type: "success" })}
+            text={`
+            curl 'https://api.capy.lol/v1/capybara?json=true' \\
+   -H 'authority: api.capy.lol' \\
+   -H 'accept: */*' \\
+   -H 'accept-language: en-US,en;q=0.9' \\
+   -H 'sec-ch-ua: ".Not/A)Brand";v="99", "Google Chrome";v="103", "Chromium";v="103"' \\
+   -H 'sec-ch-ua-mobile: ?0' \\
+   -H 'sec-ch-ua-platform: "macOS"' \\
+   -H 'sec-fetch-dest: empty' \\
+   -H 'sec-fetch-mode: cors' \\
+   -H 'sec-fetch-site: cross-site' \\
+   -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36' \\
+   --compressed
+          `}
+          >
+            <CodeContainerBtn>try it for yourself</CodeContainerBtn>
+          </CopyToClipboard>
         </div>
       </Landing>
       <Marquee
@@ -246,8 +274,8 @@ const Home: NextPage = () => {
         gradientColor={[234, 226, 215]}
       >
         <Testimonials>
-          {TESTIMONIALS.map((testimonial) => (
-            <Testimonial key={testimonial.name}>
+          {TESTIMONIALS.map((testimonial, index) => (
+            <Testimonial key={index}>
               {/* dear nextjs this is fucking stupid that i have to do this because its a flex item. */}
               <ImageWrapper>
                 <Image
@@ -273,7 +301,7 @@ const Home: NextPage = () => {
         </Testimonials>
       </Marquee>
       <DocumentationWrapper id="documentation">
-        <Intro>Documentation</Intro>
+        <Intro>documentation</Intro>
         <Request>
           <SubHeader>GET v1/capybara</SubHeader>
           <span>GET a random picture of a capybara.</span>
@@ -284,6 +312,7 @@ const Home: NextPage = () => {
             </pre>
           </CodeContainer>
           <CopyToClipboard
+            onCopy={() => toast("Copied", { type: "success" })}
             text={`curl ${BASE_API_V1}/capybara --output ./capy.jpg`}
           >
             <TextBtn>Copy cURL</TextBtn>
@@ -296,7 +325,10 @@ const Home: NextPage = () => {
               <code>{BASE_API_V1}/capybara?json=true</code>
             </pre>
           </CodeContainer>
-          <CopyToClipboard text={`curl ${BASE_API_V1}/capybara?json=true`}>
+          <CopyToClipboard
+            onCopy={() => toast("Copied", { type: "success" })}
+            text={`curl ${BASE_API_V1}/capybara?json=true`}
+          >
             <TextBtn>Copy cURL</TextBtn>
           </CopyToClipboard>
         </Request>
@@ -310,6 +342,7 @@ const Home: NextPage = () => {
             </pre>
           </CodeContainer>
           <CopyToClipboard
+            onCopy={() => toast("Copied", { type: "success" })}
             text={`curl ${BASE_API_V1}/capybara/100 --output ./capy100.jpg`}
           >
             <TextBtn>Copy cURL</TextBtn>
@@ -322,7 +355,10 @@ const Home: NextPage = () => {
               <code>{BASE_API_V1}/capybara/100?json=true</code>
             </pre>
           </CodeContainer>
-          <CopyToClipboard text={`curl ${BASE_API_V1}/capybara/100?json=true`}>
+          <CopyToClipboard
+            onCopy={() => toast("Copied", { type: "success" })}
+            text={`curl ${BASE_API_V1}/capybara/100?json=true`}
+          >
             <TextBtn>Copy cURL</TextBtn>
           </CopyToClipboard>
         </Request>
@@ -335,7 +371,10 @@ const Home: NextPage = () => {
               <code>{BASE_API_V1}/capybaras</code>
             </pre>
           </CodeContainer>
-          <CopyToClipboard text={`curl ${BASE_API_V1}/capybaras`}>
+          <CopyToClipboard
+            onCopy={() => toast("Copied", { type: "success" })}
+            text={`curl ${BASE_API_V1}/capybaras`}
+          >
             <TextBtn>Copy cURL</TextBtn>
           </CopyToClipboard>
           <br />
@@ -346,7 +385,10 @@ const Home: NextPage = () => {
               <code>{BASE_API_V1}/capybaras?take=50</code>
             </pre>
           </CodeContainer>
-          <CopyToClipboard text={`curl ${BASE_API_V1}/capybaras?take=50`}>
+          <CopyToClipboard
+            onCopy={() => toast("Copied", { type: "success" })}
+            text={`curl ${BASE_API_V1}/capybaras?take=50`}
+          >
             <TextBtn>Copy cURL</TextBtn>
           </CopyToClipboard>
           <br />
@@ -357,7 +399,10 @@ const Home: NextPage = () => {
               <code>{BASE_API_V1}/capybaras?from=50</code>
             </pre>
           </CodeContainer>
-          <CopyToClipboard text={`curl ${BASE_API_V1}/capybaras?from=50`}>
+          <CopyToClipboard
+            onCopy={() => toast("Copied", { type: "success" })}
+            text={`curl ${BASE_API_V1}/capybaras?from=50`}
+          >
             <TextBtn>Copy cURL</TextBtn>
           </CopyToClipboard>
           <br />
@@ -369,6 +414,7 @@ const Home: NextPage = () => {
             </pre>
           </CodeContainer>
           <CopyToClipboard
+            onCopy={() => toast("Copied", { type: "success" })}
             text={`curl ${BASE_API_V1}/capybaras?from=50&take=10`}
           >
             <TextBtn>Copy cURL</TextBtn>

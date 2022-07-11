@@ -46,3 +46,13 @@ a {
   --text-muted: #9e9e9e;
   --selected: rgb(195, 156, 120);
 }
+
+.Toastify__toast {
+  background: #d3c8b5 !important;
+
+  border-radius: 10px !important;
+  -webkit-border-radius: 10px !important;
+  -moz-border-radius: 10px !important;
+  -ms-border-radius: 10px !important;
+  -o-border-radius: 10px !important;
+}

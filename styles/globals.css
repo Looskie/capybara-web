@@ -17,7 +17,7 @@
 html,
 body {
   scroll-behavior: smooth;
-  width: 100vw;
+  max-width: 100vw;
   min-height: 100vh;
   background: var(--bg-primary);
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,

@@ -59,26 +59,6 @@ after Capybara api: :ChocolaPOGGERS:`,
     worksAt: "Rabbit",
   },
   {
-    message: "best api cuz they do be pulling up in a quick efficient manner.",
-    name: "shinkuWRLD",
-    pfp: "/img/shinku.png",
-    worksAt: "ur moms house",
-  },
-  {
-    message:
-      "did you know that capypabaras eat their own poop in the morning? unique diet. protein rich. he pull up.",
-    name: "Ari",
-    pfp: "/img/ari.png",
-    worksAt: "Buildergroop Corporation",
-  },
-  {
-    message:
-      "man capybara api be bussin yo this mf gon replace your enterprise-grade fancy ass graphql apis. p.s shoutout to my co-founder ari this dude gets it too yo capybara shit eating ritual mad healthy might partake one day.",
-    name: "Aaryaman Maheshwari",
-    worksAt: "Buildergroop Corporation",
-    pfp: "/img/aaryaman.png",
-  },
-  {
     message: "this api helped me a lot ❤️ ~ cody paid me $10 to say this",
     name: "funny#8181",
     pfp: "/img/funny.jpg",

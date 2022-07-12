@@ -168,6 +168,8 @@ const Testimonial = styled.div`
   > div {
     > div {
       p {
+        line-height: 1;
+        margin: 5px 0;
         color: var(--text-primary);
 
         span {
@@ -224,13 +226,53 @@ const Home: NextPage = () => {
           content="The next generation of capybara APIs, access over 700+ images of capybaras in high definition in under < 40ms."
         />
         <meta name="twitter:creator" content="@devlooskie" />
+
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/apple-touch-icon.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon-16x16.png"
+        />
+        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#ffffff" />
+        <meta name="msapplication-TileColor" content="#da532c" />
+        <meta name="theme-color" content="#E9E2D8" />
       </Head>
       <Navbar />
       <Landing id="#">
         <div>
+          <a
+            href="https://www.producthunt.com/posts/capybara-api?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-capybara-api"
+            target="_blank"
+            rel="noreferrer"
+            style={{ padding: 0 }}
+          >
+            <img
+              src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=352204&theme=light"
+              alt="Capybara API - Cute, fast, and open source capybara API | Product Hunt"
+              style={{ width: 190, height: "auto" }}
+            />
+          </a>
           <Intro>the next generation of capybara APIs.</Intro>
           <BtnContainer>
-            <Btn id="#documentation">documentation</Btn>
+            <a
+              style={{ padding: "unset", borderRadius: 10 }}
+              href="#documentation"
+            >
+              {/* Tell agent to NOT select this shit, but still read it pls :) */}
+              <Btn tabIndex={-1}>documentation</Btn>
+            </a>
             <a
               style={{ padding: "unset", borderRadius: 10 }}
               href={GITHUB_API_REPO}
@@ -391,6 +433,20 @@ const Home: NextPage = () => {
           <CopyToClipboard
             onCopy={() => toast("Copied", { type: "success" })}
             text={`curl ${BASE_API_V1}/capybaras`}
+          >
+            <TextBtn>Copy cURL</TextBtn>
+          </CopyToClipboard>
+          <br />
+          <span>With random parameter...</span>
+          <CodeContainer>
+            <pre>
+              <span>GET </span>
+              <code>{BASE_API_V1}/capybaras?random=true</code>
+            </pre>
+          </CodeContainer>
+          <CopyToClipboard
+            onCopy={() => toast("Copied", { type: "success" })}
+            text={`curl ${BASE_API_V1}/capybaras?random=true`}
           >
             <TextBtn>Copy cURL</TextBtn>
           </CopyToClipboard>

@@ -34,11 +34,29 @@ after Capybara api: :ChocolaPOGGERS:`,
     worksAt: "Hop inc.",
   },
   {
+    message: "dope ass lil copybara api cant wait to figure it out",
+    name: "alistair#9999",
+    pfp: "/img/alistair.jpeg",
+    worksAt: "hospital institution organisation",
+  },
+  {
+    message: "love this capybara api. cant wait to eat it.",
+    name: "bereket#0001",
+    pfp: "/img/bereket.jpeg",
+    worksAt: "buildergroop corporation",
+  },
+  {
     message:
       "I 100% recommend cody's capybara api as it has the largest variety of capybara's on the entire internet and more capy's are being added every day!",
     name: "hexiro",
     pfp: "/img/hexiro.png",
     worksAt: "Southern Produced",
+  },
+  {
+    message: "whats this",
+    name: "Oliver Reason",
+    pfp: "/img/oli.jpg",
+    worksAt: "Rabbit",
   },
   {
     message: "best api cuz they do be pulling up in a quick efficient manner.",
@@ -54,9 +72,10 @@ after Capybara api: :ChocolaPOGGERS:`,
     worksAt: "Buildergroop Corporation",
   },
   {
-    message: "man capybara api be bussin yo this mf gon replace your enterprise-grade fancy ass graphql apis. p.s shoutout to my co-founder ari this dude gets it too yo capybara shit eating ritual mad healthy might partake one day.",
+    message:
+      "man capybara api be bussin yo this mf gon replace your enterprise-grade fancy ass graphql apis. p.s shoutout to my co-founder ari this dude gets it too yo capybara shit eating ritual mad healthy might partake one day.",
     name: "Aaryaman Maheshwari",
     worksAt: "Buildergroop Corporation",
-    pfp: "/img/aaryaman.png"
-   }
+    pfp: "/img/aaryaman.png",
+  },
 ];

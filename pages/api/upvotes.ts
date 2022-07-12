@@ -5,11 +5,7 @@ import { load } from "cheerio";
 type Data = {
   upvotes: number;
 };
-
-export const handler = async (
-  req: NextApiRequest,
-  res: NextApiResponse<Data>
-) => {
+const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
   try {
     const { data } = await axios.get(
       "https://www.producthunt.com/products/capybara-api"
@@ -32,3 +28,5 @@ export const handler = async (
     res.status(200).json({ upvotes: 8 });
   }
 };
+
+export default handler;

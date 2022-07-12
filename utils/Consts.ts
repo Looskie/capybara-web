@@ -28,6 +28,38 @@ after Capybara api: :ChocolaPOGGERS:`,
   },
   {
     message:
+      "did you know that capypabaras eat their own poop in the morning? unique diet. protein rich. he pull up.",
+    name: "Ari Dutilh",
+    pfp: "/img/ari.png",
+    worksAt: "Buildergroop Corporation",
+  },
+  {
+    message:
+      "man capybara api be bussin yo this mf gon replace your enterprise-grade fancy ass graphql apis. p.s shoutout to my co-founder ari this dude gets it too yo capybara shit eating ritual mad healthy might partake one day.",
+    name: "Aaryaman Maheshwari",
+    worksAt: "Buildergroop Corporation",
+    pfp: "/img/aaryaman.png",
+  },
+  {
+    message: "love this capybara api. cant wait to eat it.",
+    name: "Bereket Semagn",
+    pfp: "/img/bereket.jpeg",
+    worksAt: "Buildergroop Corporation",
+  },
+  {
+    message: "Love mi capys. Love mi cody. Love mi API.",
+    name: "Tejas Ravishankar Ravi Shankar Ganapathy Agraharam Venkataraman",
+    pfp: "/img/tejas.png",
+    worksAt: "Buildergroop Corporation",
+  },
+  {
+    message: "best api cuz they do be pulling up in a quick efficient manner.",
+    name: "shinkuWRLD",
+    pfp: "/img/shinku.png",
+    worksAt: "ur moms house",
+  },
+  {
+    message:
       "A phenomenal implementation of an image delivery system with no downtime and 99.9999% uptime SLA guaranteed that suits all of my needs",
     name: "pxseu",
     pfp: "/img/pxseu.png",
@@ -38,12 +70,6 @@ after Capybara api: :ChocolaPOGGERS:`,
     name: "alistair#9999",
     pfp: "/img/alistair.jpeg",
     worksAt: "hospital institution organisation",
-  },
-  {
-    message: "love this capybara api. cant wait to eat it.",
-    name: "bereket#0001",
-    pfp: "/img/bereket.jpeg",
-    worksAt: "buildergroop corporation",
   },
   {
     message:

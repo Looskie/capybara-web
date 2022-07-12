@@ -8,7 +8,6 @@ type Data = {
 
 export default async (req: NextApiRequest, res: NextApiResponse<Data>) => {
   try {
-    console.log("count");
     const { data } = await axios.get(
       "https://www.producthunt.com/products/capybara-api"
     );

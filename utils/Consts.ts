@@ -55,7 +55,7 @@ after Capybara api: :ChocolaPOGGERS:`,
   {
     message: "whats this",
     name: "Oliver Reason",
-    pfp: "oli.jpg",
+    pfp: "/img/oli.jpg",
     worksAt: "Rabbit",
   },
   {

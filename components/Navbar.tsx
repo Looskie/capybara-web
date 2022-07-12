@@ -78,6 +78,7 @@ const Navbar = () => {
           </a>
         </li>
       </StyledLinks>
+
       <Socials>
         <a href={GITHUB_REPO} target="_blank" rel="noreferrer">
           <GitHubIcon />

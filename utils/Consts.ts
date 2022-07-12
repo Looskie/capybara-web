@@ -53,6 +53,12 @@ after Capybara api: :ChocolaPOGGERS:`,
     worksAt: "Southern Produced",
   },
   {
+    message: "whats this",
+    name: "Oliver Reason",
+    pfp: "oli.jpg",
+    worksAt: "Rabbit",
+  },
+  {
     message: "best api cuz they do be pulling up in a quick efficient manner.",
     name: "shinkuWRLD",
     pfp: "/img/shinku.png",
@@ -66,9 +72,10 @@ after Capybara api: :ChocolaPOGGERS:`,
     worksAt: "Buildergroop Corporation",
   },
   {
-    message: "man capybara api be bussin yo this mf gon replace your enterprise-grade fancy ass graphql apis. p.s shoutout to my co-founder ari this dude gets it too yo capybara shit eating ritual mad healthy might partake one day.",
+    message:
+      "man capybara api be bussin yo this mf gon replace your enterprise-grade fancy ass graphql apis. p.s shoutout to my co-founder ari this dude gets it too yo capybara shit eating ritual mad healthy might partake one day.",
     name: "Aaryaman Maheshwari",
     worksAt: "Buildergroop Corporation",
-    pfp: "/img/aaryaman.png"
-   }
+    pfp: "/img/aaryaman.png",
+  },
 ];

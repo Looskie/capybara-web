@@ -59,7 +59,7 @@ const Home: NextPage = () => {
             href="https://www.producthunt.com/posts/capybara-api?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-capybara&#0045;api"
             target="_blank"
             rel="noreferrer"
-            style={{ width: "fit-content" }}
+            style={{ width: "fit-content", padding: 0, borderRadius: 11.125 }}
           >
             <S.ProductHunt>
               <ProductHuntIcon />{" "}

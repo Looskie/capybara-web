@@ -21,7 +21,7 @@ export const InnerNav = styled.div`
   align-self: center;
   font-size: 1.15em;
 
-  padding: 2rem;
+  padding: 1.25rem 2rem;
 
   width: 100%;
   max-width: 1300px;

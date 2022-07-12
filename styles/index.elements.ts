@@ -11,7 +11,7 @@ export const Polka = styled.div`
     url("/polka-dots.svg");
   position: absolute;
   inset: 0;
-  height: 400px;
+  height: 500px;
   z-index: 1;
 `;
 

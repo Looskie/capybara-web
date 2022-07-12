@@ -36,6 +36,16 @@ body {
   border-radius: 8px;
 }
 
+::-moz-selection {
+  color: var(--selected);
+  background: #252525;
+}
+
+::selection {
+  color: var(--selected);
+  background: #252525;
+}
+
 a {
   color: inherit;
   text-decoration: none;

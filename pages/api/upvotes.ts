@@ -6,7 +6,10 @@ type Data = {
   upvotes: number;
 };
 
-export default async (req: NextApiRequest, res: NextApiResponse<Data>) => {
+export const handler = async (
+  req: NextApiRequest,
+  res: NextApiResponse<Data>
+) => {
   try {
     const { data } = await axios.get(
       "https://www.producthunt.com/products/capybara-api"

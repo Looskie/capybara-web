@@ -49,7 +49,7 @@ after Capybara api: :ChocolaPOGGERS:`,
   {
     message: "Love mi capys. Love mi cody. Love mi API.",
     name: "Tejas Ravishankar Ravi Shankar Ganapathy Agraharam Venkataraman",
-    pfp: "/img/tejas.jpeg",
+    pfp: "/img/tejas.png",
     worksAt: "Buildergroop Corporation",
   },
   {

@@ -52,6 +52,7 @@ const Home: NextPage = () => {
         <meta name="theme-color" content="#E9E2D8" />
       </Head>
       <Navbar />
+      <S.Polka />
       <S.Landing id="#">
         <div>
           <a

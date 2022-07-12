@@ -6,6 +6,15 @@ export const Wrapper = styled.div`
   height: 100%;
 `;
 
+export const Polka = styled.div`
+  background: linear-gradient(transparent, var(--bg-primary)),
+    url("/polka-dots.svg");
+  position: absolute;
+  inset: 0;
+  height: 400px;
+  z-index: 1;
+`;
+
 export const Landing = styled.div`
   display: flex;
   align-items: center;
@@ -15,6 +24,7 @@ export const Landing = styled.div`
   margin: 0 auto;
 
   padding: 8rem 2rem;
+  z-index: 2;
 
   > div {
     display: flex;

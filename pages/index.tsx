@@ -230,6 +230,18 @@ const Home: NextPage = () => {
       <Navbar />
       <Landing id="#">
         <div>
+          <a
+            href="https://www.producthunt.com/posts/capybara-api?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-capybara-api"
+            target="_blank"
+            rel="noreferrer"
+            style={{ padding: 0 }}
+          >
+            <img
+              src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=352204&theme=light"
+              alt="Capybara API - Cute, fast, and open source capybara API | Product Hunt"
+              style={{ width: 190, height: "auto" }}
+            />
+          </a>
           <Intro>the next generation of capybara APIs.</Intro>
           <BtnContainer>
             <a
@@ -459,20 +471,7 @@ const Home: NextPage = () => {
             <TextBtn>Copy cURL</TextBtn>
           </CopyToClipboard>
         </Request>
-      </DocumentationWrapper>{" "}
-      <a
-        href="https://www.producthunt.com/posts/capybara-api?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-capybara-api"
-        target="_blank"
-        rel="noreferrer"
-      >
-        <img
-          src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=352204&theme=light"
-          alt="Capybara API - Cute, fast, and open source capybara API | Product Hunt"
-          style={{ width: 200, height: "auto" }}
-          width={150}
-          height={54}
-        />
-      </a>
+      </DocumentationWrapper>
     </Wrapper>
   );
 };

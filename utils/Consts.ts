@@ -84,4 +84,10 @@ after Capybara api: :ChocolaPOGGERS:`,
     pfp: "/img/oli.jpg",
     worksAt: "Rabbit",
   },
+  {
+    message: "this api helped me a lot ❤️ ~ cody paid me $10 to say this",
+    name: "funny#8181",
+    pfp: "/img/funny.jpg",
+    worksAt: "BoringHand Inc",
+  },
 ];

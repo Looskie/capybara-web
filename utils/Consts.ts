@@ -78,4 +78,10 @@ after Capybara api: :ChocolaPOGGERS:`,
     worksAt: "Buildergroop Corporation",
     pfp: "/img/aaryaman.png",
   },
+  {
+    message: "this api helped me a lot ❤️ ~ cody paid me $10 to say this",
+    name: "funny#8181",
+    pfp: "/img/funny.jpg",
+    worksAt: "BoringHand Inc",
+  },
 ];

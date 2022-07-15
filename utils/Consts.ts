@@ -79,6 +79,13 @@ after Capybara api: :ChocolaPOGGERS:`,
     worksAt: "Southern Produced",
   },
   {
+    message:
+      "The capy.lol API has changed my life. Never before have I been able to get photos of capybaras in such an efficient manner. The implementation is beautiful and allows our application to remain clean inside and out.",
+    name: "haden",
+    pfp: "/img/haden.jpeg",
+    worksAt: "Spacedrive",
+  },
+  {
     message: "whats this",
     name: "Oliver Reason",
     pfp: "/img/oli.jpg",

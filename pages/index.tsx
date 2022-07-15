@@ -307,6 +307,66 @@ const Home: NextPage = () => {
             <S.TextBtn>Copy cURL</S.TextBtn>
           </CopyToClipboard>
         </S.Request>
+        <S.Request>
+          <S.SubHeader>GET v1/capyoftheday</S.SubHeader>
+          <span>GET the capy of the day! (refreshes every 24hrs)</span>
+          <S.CodeContainer>
+            <pre>
+              <span>GET </span>
+              <code>{BASE_API_V1}/capyoftheday</code>
+            </pre>
+          </S.CodeContainer>
+          <CopyToClipboard
+            onCopy={() => toast("Copied", { type: "success" })}
+            text={`curl ${BASE_API_V1}/capyoftheday --output ./capyoftheday.jpeg`}
+          >
+            <S.TextBtn>Copy cURL</S.TextBtn>
+          </CopyToClipboard>
+          <br />
+          <span>For JSON format...</span>
+          <S.CodeContainer>
+            <pre>
+              <span>GET </span>
+              <code>{BASE_API_V1}/capyoftheday?json=true</code>
+            </pre>
+          </S.CodeContainer>
+          <CopyToClipboard
+            onCopy={() => toast("Copied", { type: "success" })}
+            text={`curl ${BASE_API_V1}/capyoftheday?json=true`}
+          >
+            <S.TextBtn>Copy cURL</S.TextBtn>
+          </CopyToClipboard>
+        </S.Request>
+        <S.Request>
+          <S.SubHeader>GET v1/capyhour</S.SubHeader>
+          <span>GET the capy of the hour! (refreshes every hour)</span>
+          <S.CodeContainer>
+            <pre>
+              <span>GET </span>
+              <code>{BASE_API_V1}/capyhour</code>
+            </pre>
+          </S.CodeContainer>
+          <CopyToClipboard
+            onCopy={() => toast("Copied", { type: "success" })}
+            text={`curl ${BASE_API_V1}/capyhour --output ./capyhour.jpeg`}
+          >
+            <S.TextBtn>Copy cURL</S.TextBtn>
+          </CopyToClipboard>
+          <br />
+          <span>For JSON format...</span>
+          <S.CodeContainer>
+            <pre>
+              <span>GET </span>
+              <code>{BASE_API_V1}/capyhour?json=true</code>
+            </pre>
+          </S.CodeContainer>
+          <CopyToClipboard
+            onCopy={() => toast("Copied", { type: "success" })}
+            text={`curl ${BASE_API_V1}/capyhour?json=true`}
+          >
+            <S.TextBtn>Copy cURL</S.TextBtn>
+          </CopyToClipboard>
+        </S.Request>
       </S.DocumentationWrapper>
     </S.Wrapper>
   );

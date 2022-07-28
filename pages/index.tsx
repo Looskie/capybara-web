@@ -1,13 +1,8 @@
+import styled from "styled-components";
 import type { NextPage } from "next";
 import Navbar from "../components/Navbar";
 import Marquee from "react-fast-marquee";
-import * as S from "../styles/index.elements";
-import {
-  BASE_API_V1,
-  GITHUB_API_REPO,
-  GITHUB_REPO,
-  TESTIMONIALS,
-} from "../utils/Consts";
+import { BASE_API_V1, GITHUB_API_REPO, TESTIMONIALS } from "../utils/Consts";
 import Image from "next/image";
 import CopyToClipboard from "react-copy-to-clipboard";
 import { toast } from "react-toastify";
@@ -15,9 +10,295 @@ import Head from "next/head";
 import { BuildingIcon, ProductHuntIcon, UpIcon } from "../components/Icons";
 import { Upvotes } from "../components/Upvotes";
 
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+`;
+
+const Polka = styled.div`
+  background: linear-gradient(transparent, var(--bg-primary)),
+    url("/polka-dots.svg");
+  position: absolute;
+  inset: 0;
+  height: 500px;
+  z-index: 1;
+`;
+
+const Landing = styled.div`
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+
+  padding: 8rem 2rem;
+  z-index: 2;
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    &:nth-child(2) {
+      @media (max-width: 1120px) {
+        display: none; // sneaky ;)
+      }
+    }
+  }
+`;
+
+const ProductHunt = styled.div`
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  background: #da552f;
+  width: fit-content;
+  border-radius: 12px;
+  color: white;
+  div {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.25em;
+    margin-left: 15px;
+    font-weight: 500;
+    span {
+      font-size: 0.65em;
+      opacity: 0.75;
+      position: relative;
+    }
+
+    &:nth-of-type(2) {
+      align-items: center;
+      justify-content: center;
+      align-self: center;
+      font-size: 1.15em;
+      svg {
+        width: 1.25em;
+        height: 1.25em;
+        position: relative;
+        margin: -5px 0;
+      }
+    }
+  }
+  svg {
+    width: 3em;
+    height: 3em;
+  }
+`;
+
+const Intro = styled.h1`
+  max-width: 13ch;
+  font-size: 3.85em; // big text = attention
+  font-weight: 800;
+  line-height: 1.35;
+  margin-top: 20px;
+`;
+
+const SubHeader = styled.h2`
+  font-size: 1.5em;
+  font-weight: 700;
+  line-height: 1.35;
+  margin-bottom: 5px;
+  margin-left: 0 !important;
+`;
+
+const BtnContainer = styled.div`
+  display: flex;
+  gap: 20px;
+  margin-top: 30px;
+  align-self: flex-start;
+`;
+
+const Btn = styled.button`
+  outline: none;
+  border: unset;
+  color: var(--text-secondary);
+  padding: 8px;
+  border-radius: 10px;
+  background: var(--bg-secondary);
+  opacity: 0.75;
+  cursor: pointer;
+  border: 2px solid rgb(0 0 0 / 5%);
+
+  transition: all 0.15s ease-in-out;
+
+  &:hover {
+    opacity: 1;
+    border: 2px solid rgb(0 0 0 / 12%);
+  }
+`;
+
+const TextBtn = styled.button`
+  outline: none;
+  border: unset;
+  color: var(--text-secondary);
+  background: unset;
+  margin-left: auto;
+  opacity: 0.75;
+  cursor: pointer;
+  font-size: 0.9em;
+  margin-bottom: 20px;
+
+  transition: all 0.15s ease-in-out;
+
+  &:hover {
+    opacity: 1;
+  }
+`;
+
+const CodeContainerBtn = styled.button`
+  position: absolute;
+  right: -20px;
+  bottom: -18px;
+  outline: none;
+  border: unset;
+  color: var(--text-primary);
+  padding: 8px;
+  border-radius: 10px;
+  background: var(--bg-tertiary);
+  opacity: 0.9;
+  cursor: pointer;
+  border: 2px solid rgb(0 0 0 / 12%);
+
+  align-self: flex-end;
+  margin-top: -15px;
+
+  transition: all 0.15s ease-in-out;
+
+  &:hover {
+    opacity: 1;
+    box-shadow: 0px 0px 8px rgb(0 0 0 / 12%);
+  }
+`;
+
+const CodeContainer = styled.div`
+  position: relative;
+  align-self: center;
+  justify-self: center;
+  display: flex;
+  background: var(--bg-secondary);
+  border-radius: 10px;
+  padding: 10px;
+  border: 2px solid rgb(0 0 0 / 12%);
+
+  width: 100%;
+  height: 100%;
+  max-width: 550px;
+
+  span {
+    user-select: none;
+    color: var(----text-muted);
+  }
+
+  pre {
+    color: var(--text-secondary);
+    line-height: 1.25;
+  }
+`;
+
+const Testimonials = styled.div`
+  width: 100%;
+  display: flex;
+  gap: 50px;
+
+  padding: 5rem 0;
+`;
+
+const Testimonial = styled.div`
+  display: flex;
+  min-width: 400px;
+  max-width: 400px;
+  background: var(--bg-secondary);
+  padding: 15px;
+  border-radius: 18px;
+  border: 2px solid rgb(0 0 0 / 12%);
+  padding-top: 50px;
+  position: relative;
+
+  &:first-of-type {
+    margin-left: 50px;
+  }
+
+  > div {
+    > div {
+      p {
+        line-height: 1;
+        margin-bottom: 8px;
+        color: var(--text-primary);
+        font-size: 1.2em;
+        span {
+          display: flex;
+          align-items: center;
+          font-size: 0.85em;
+          color: var(--text-secondary);
+          margin-top: 5px;
+          opacity: 0.75;
+          svg {
+            width: 1.2em;
+            height: 1.2em;
+            margin-right: 5px;
+          }
+        }
+      }
+    }
+    > p {
+      margin-top: 5px;
+      line-height: 1;
+      font-weight: 400;
+      color: var(--text-secondary);
+      font-size: 1.15em;
+      line-height: 115%;
+    }
+  }
+`;
+
+const ImageWrapper = styled.div`
+  margin-right: 15px;
+
+  position: absolute;
+  top: -28px;
+
+  left: 14px;
+  span {
+    border: 2px solid rgb(0 0 0 / 35%) !important;
+    border-radius: 18px;
+  }
+`;
+
+const DocumentationWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+
+  padding: 6rem 2rem;
+
+  h1 {
+    margin-bottom: 50px;
+  }
+`;
+
+const Request = styled.div`
+  margin-bottom: 50px;
+  > span {
+    font-weight: 600;
+    color: var(--text-secondary);
+    padding: 5px 0;
+    display: block;
+  }
+
+  > * {
+    margin-left: 25px;
+  }
+`;
+
 const Home: NextPage = () => {
   return (
-    <S.Wrapper>
+    <Wrapper>
       <Head>
         <title>Home - capy.lol</title>
         <meta property="og:type" content="website" />
@@ -25,7 +306,7 @@ const Home: NextPage = () => {
         <meta property="og:title" content="Capybara API" />
         <meta
           property="og:description"
-          content="The next generation of capybara APIs, access over 700+ images of capybaras in high definition in under < 40ms."
+          content="The next generation of capybara APIs, access over 700+ images of capybaras in high definition."
         />
         <meta name="twitter:creator" content="@devlooskie" />
 
@@ -51,9 +332,10 @@ const Home: NextPage = () => {
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#E9E2D8" />
       </Head>
+
       <Navbar />
-      <S.Polka />
-      <S.Landing id="#">
+      <Polka />
+      <Landing id="#">
         <div>
           <a
             href="https://www.producthunt.com/posts/capybara-api?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-capybara&#0045;api"
@@ -61,7 +343,7 @@ const Home: NextPage = () => {
             rel="noreferrer"
             style={{ width: "fit-content", padding: 0, borderRadius: 11.125 }}
           >
-            <S.ProductHunt>
+            <ProductHunt>
               <ProductHuntIcon />{" "}
               <div>
                 <span>FIND US ON</span>Product Hunt
@@ -70,17 +352,17 @@ const Home: NextPage = () => {
                 <UpIcon />
                 <Upvotes />
               </div>
-            </S.ProductHunt>
+            </ProductHunt>
           </a>
 
-          <S.Intro>the next generation of capybara APIs.</S.Intro>
-          <S.BtnContainer>
+          <Intro>the next generation of capybara APIs.</Intro>
+          <BtnContainer>
             <a
               style={{ padding: "unset", borderRadius: 10 }}
               href="#documentation"
             >
               {/* Tell agent to NOT select this shit, but still read it pls :) */}
-              <S.Btn tabIndex={-1}>documentation</S.Btn>
+              <Btn tabIndex={-1}>documentation</Btn>
             </a>
             <a
               style={{ padding: "unset", borderRadius: 10 }}
@@ -89,12 +371,12 @@ const Home: NextPage = () => {
               rel="noreferrer"
             >
               {/* Tell agent to NOT select this shit, but still read it pls :) */}
-              <S.Btn tabIndex={-1}>source</S.Btn>
+              <Btn tabIndex={-1}>source</Btn>
             </a>
-          </S.BtnContainer>
+          </BtnContainer>
         </div>
         <div>
-          <S.CodeContainer>
+          <CodeContainer>
             <div style={{ overflow: "auto" }}>
               <pre>
                 {`~ curl 'https://api.capy.lol/v1/capybara?json=true' \\
@@ -130,22 +412,22 @@ const Home: NextPage = () => {
    --compressed
           `}
             >
-              <S.CodeContainerBtn>try it for yourself</S.CodeContainerBtn>
+              <CodeContainerBtn>try it for yourself</CodeContainerBtn>
             </CopyToClipboard>
-          </S.CodeContainer>
+          </CodeContainer>
         </div>
-      </S.Landing>
+      </Landing>
       <Marquee
         speed={50}
         gradientWidth={100}
         style={{ width: "100%" }}
         gradientColor={[234, 226, 215]}
       >
-        <S.Testimonials>
+        <Testimonials>
           {TESTIMONIALS.map((testimonial, index) => (
-            <S.Testimonial key={index}>
+            <Testimonial key={index}>
               {/* dear nextjs this is fucking stupid that i have to do this because its a flex item. */}
-              <S.ImageWrapper>
+              <ImageWrapper>
                 <Image
                   style={{
                     borderRadius: "0",
@@ -157,7 +439,7 @@ const Home: NextPage = () => {
                   src={testimonial.pfp}
                   alt={testimonial.name + "'s pfp"}
                 />
-              </S.ImageWrapper>
+              </ImageWrapper>
               <div>
                 <div>
                   <p>
@@ -169,206 +451,206 @@ const Home: NextPage = () => {
                 </div>
                 <p>{testimonial.message}</p>
               </div>
-            </S.Testimonial>
+            </Testimonial>
           ))}
-        </S.Testimonials>
+        </Testimonials>
       </Marquee>
-      <S.DocumentationWrapper id="documentation">
-        <S.Intro>documentation</S.Intro>
-        <S.Request>
-          <S.SubHeader>GET v1/capybara</S.SubHeader>
+      <DocumentationWrapper id="documentation">
+        <Intro>documentation</Intro>
+        <Request>
+          <SubHeader>GET v1/capybara</SubHeader>
           <span>GET a random picture of a capybara.</span>
-          <S.CodeContainer>
+          <CodeContainer>
             <pre>
               <span>GET </span>
               <code>{BASE_API_V1}/capybara</code>
             </pre>
-          </S.CodeContainer>
+          </CodeContainer>
           <CopyToClipboard
             onCopy={() => toast("Copied", { type: "success" })}
             text={`curl ${BASE_API_V1}/capybara --output ./capy.jpg`}
           >
-            <S.TextBtn>Copy cURL</S.TextBtn>
+            <TextBtn>Copy cURL</TextBtn>
           </CopyToClipboard>
           <br />
           <span>For JSON format...</span>
-          <S.CodeContainer>
+          <CodeContainer>
             <pre>
               <span>GET </span>
               <code>{BASE_API_V1}/capybara?json=true</code>
             </pre>
-          </S.CodeContainer>
+          </CodeContainer>
           <CopyToClipboard
             onCopy={() => toast("Copied", { type: "success" })}
             text={`curl ${BASE_API_V1}/capybara?json=true`}
           >
-            <S.TextBtn>Copy cURL</S.TextBtn>
+            <TextBtn>Copy cURL</TextBtn>
           </CopyToClipboard>
-        </S.Request>
-        <S.Request>
-          <S.SubHeader>GET v1/capybara/:index</S.SubHeader>
+        </Request>
+        <Request>
+          <SubHeader>GET v1/capybara/:index</SubHeader>
           <span>GET a picture of a capybara.</span>
-          <S.CodeContainer>
+          <CodeContainer>
             <pre>
               <span>GET </span>
               <code>{BASE_API_V1}/capybara/100</code>
             </pre>
-          </S.CodeContainer>
+          </CodeContainer>
           <CopyToClipboard
             onCopy={() => toast("Copied", { type: "success" })}
             text={`curl ${BASE_API_V1}/capybara/100 --output ./capy100.jpg`}
           >
-            <S.TextBtn>Copy cURL</S.TextBtn>
+            <TextBtn>Copy cURL</TextBtn>
           </CopyToClipboard>
           <br />
           <span>For JSON format...</span>
-          <S.CodeContainer>
+          <CodeContainer>
             <pre>
               <span>GET </span>
               <code>{BASE_API_V1}/capybara/100?json=true</code>
             </pre>
-          </S.CodeContainer>
+          </CodeContainer>
           <CopyToClipboard
             onCopy={() => toast("Copied", { type: "success" })}
             text={`curl ${BASE_API_V1}/capybara/100?json=true`}
           >
-            <S.TextBtn>Copy cURL</S.TextBtn>
+            <TextBtn>Copy cURL</TextBtn>
           </CopyToClipboard>
-        </S.Request>
-        <S.Request>
-          <S.SubHeader>GET v1/capybaras</S.SubHeader>
+        </Request>
+        <Request>
+          <SubHeader>GET v1/capybaras</SubHeader>
           <span>GET a JSON list of capybaras (default 25 a request)</span>
-          <S.CodeContainer>
+          <CodeContainer>
             <pre>
               <span>GET </span>
               <code>{BASE_API_V1}/capybaras</code>
             </pre>
-          </S.CodeContainer>
+          </CodeContainer>
           <CopyToClipboard
             onCopy={() => toast("Copied", { type: "success" })}
             text={`curl ${BASE_API_V1}/capybaras`}
           >
-            <S.TextBtn>Copy cURL</S.TextBtn>
+            <TextBtn>Copy cURL</TextBtn>
           </CopyToClipboard>
           <br />
           <span>With random parameter...</span>
-          <S.CodeContainer>
+          <CodeContainer>
             <pre>
               <span>GET </span>
               <code>{BASE_API_V1}/capybaras?random=true</code>
             </pre>
-          </S.CodeContainer>
+          </CodeContainer>
           <CopyToClipboard
             onCopy={() => toast("Copied", { type: "success" })}
             text={`curl ${BASE_API_V1}/capybaras?random=true`}
           >
-            <S.TextBtn>Copy cURL</S.TextBtn>
+            <TextBtn>Copy cURL</TextBtn>
           </CopyToClipboard>
           <br />
           <span>With take parameter...</span>
-          <S.CodeContainer>
+          <CodeContainer>
             <pre>
               <span>GET </span>
               <code>{BASE_API_V1}/capybaras?take=50</code>
             </pre>
-          </S.CodeContainer>
+          </CodeContainer>
           <CopyToClipboard
             onCopy={() => toast("Copied", { type: "success" })}
             text={`curl ${BASE_API_V1}/capybaras?take=50`}
           >
-            <S.TextBtn>Copy cURL</S.TextBtn>
+            <TextBtn>Copy cURL</TextBtn>
           </CopyToClipboard>
           <br />
           <span>With from parameter...</span>
-          <S.CodeContainer>
+          <CodeContainer>
             <pre>
               <span>GET </span>
               <code>{BASE_API_V1}/capybaras?from=50</code>
             </pre>
-          </S.CodeContainer>
+          </CodeContainer>
           <CopyToClipboard
             onCopy={() => toast("Copied", { type: "success" })}
             text={`curl ${BASE_API_V1}/capybaras?from=50`}
           >
-            <S.TextBtn>Copy cURL</S.TextBtn>
+            <TextBtn>Copy cURL</TextBtn>
           </CopyToClipboard>
           <br />
           <span>With take and from parameter...</span>
-          <S.CodeContainer>
+          <CodeContainer>
             <pre>
               <span>GET </span>
               <code>{BASE_API_V1}/capybaras?from=50&take=10</code>
             </pre>
-          </S.CodeContainer>
+          </CodeContainer>
           <CopyToClipboard
             onCopy={() => toast("Copied", { type: "success" })}
             text={`curl ${BASE_API_V1}/capybaras?from=50&take=10`}
           >
-            <S.TextBtn>Copy cURL</S.TextBtn>
+            <TextBtn>Copy cURL</TextBtn>
           </CopyToClipboard>
-        </S.Request>
-        <S.Request>
-          <S.SubHeader>GET v1/capyoftheday</S.SubHeader>
+        </Request>
+        <Request>
+          <SubHeader>GET v1/capyoftheday</SubHeader>
           <span>GET the capy of the day! (refreshes every 24hrs)</span>
-          <S.CodeContainer>
+          <CodeContainer>
             <pre>
               <span>GET </span>
               <code>{BASE_API_V1}/capyoftheday</code>
             </pre>
-          </S.CodeContainer>
+          </CodeContainer>
           <CopyToClipboard
             onCopy={() => toast("Copied", { type: "success" })}
             text={`curl ${BASE_API_V1}/capyoftheday --output ./capyoftheday.jpeg`}
           >
-            <S.TextBtn>Copy cURL</S.TextBtn>
+            <TextBtn>Copy cURL</TextBtn>
           </CopyToClipboard>
           <br />
           <span>For JSON format...</span>
-          <S.CodeContainer>
+          <CodeContainer>
             <pre>
               <span>GET </span>
               <code>{BASE_API_V1}/capyoftheday?json=true</code>
             </pre>
-          </S.CodeContainer>
+          </CodeContainer>
           <CopyToClipboard
             onCopy={() => toast("Copied", { type: "success" })}
             text={`curl ${BASE_API_V1}/capyoftheday?json=true`}
           >
-            <S.TextBtn>Copy cURL</S.TextBtn>
+            <TextBtn>Copy cURL</TextBtn>
           </CopyToClipboard>
-        </S.Request>
-        <S.Request>
-          <S.SubHeader>GET v1/capyhour</S.SubHeader>
+        </Request>
+        <Request>
+          <SubHeader>GET v1/capyhour</SubHeader>
           <span>GET the capy of the hour! (refreshes every hour)</span>
-          <S.CodeContainer>
+          <CodeContainer>
             <pre>
               <span>GET </span>
               <code>{BASE_API_V1}/capyhour</code>
             </pre>
-          </S.CodeContainer>
+          </CodeContainer>
           <CopyToClipboard
             onCopy={() => toast("Copied", { type: "success" })}
             text={`curl ${BASE_API_V1}/capyhour --output ./capyhour.jpeg`}
           >
-            <S.TextBtn>Copy cURL</S.TextBtn>
+            <TextBtn>Copy cURL</TextBtn>
           </CopyToClipboard>
           <br />
           <span>For JSON format...</span>
-          <S.CodeContainer>
+          <CodeContainer>
             <pre>
               <span>GET </span>
               <code>{BASE_API_V1}/capyhour?json=true</code>
             </pre>
-          </S.CodeContainer>
+          </CodeContainer>
           <CopyToClipboard
             onCopy={() => toast("Copied", { type: "success" })}
             text={`curl ${BASE_API_V1}/capyhour?json=true`}
           >
-            <S.TextBtn>Copy cURL</S.TextBtn>
+            <TextBtn>Copy cURL</TextBtn>
           </CopyToClipboard>
-        </S.Request>
-      </S.DocumentationWrapper>
-    </S.Wrapper>
+        </Request>
+      </DocumentationWrapper>
+    </Wrapper>
   );
 };
 

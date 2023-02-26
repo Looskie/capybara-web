@@ -97,4 +97,10 @@ after Capybara api: :ChocolaPOGGERS:`,
     pfp: "/img/funny.jpg",
     worksAt: "BoringHand Inc",
   },
+  {
+    message: "capybara ".repeat(14),
+    name: "Nicholas",
+    pfp: "/img/nick.png",
+    worksAt: "Strip club"
+  }
 ];

@@ -54,12 +54,16 @@ const StyledLinks = styled.ul`
       color: var(--text-secondary);
     }
   }
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const Socials = styled.div`
   display: flex;
   gap: 20px;
-  justify-self: right;
+  margin-left: auto;
 
   svg {
     display: block;

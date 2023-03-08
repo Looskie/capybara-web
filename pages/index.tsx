@@ -94,6 +94,10 @@ const Intro = styled.h1`
   font-weight: 800;
   line-height: 1.35;
   margin-top: 20px;
+
+  @media (max-width: 550px) {
+    font-size: 2em;
+  }
 `;
 
 const SubHeader = styled.h2`
@@ -182,6 +186,7 @@ const CodeContainer = styled.div`
   border-radius: 10px;
   padding: 10px;
   border: 2px solid rgb(0 0 0 / 12%);
+  overflow: hidden;
 
   width: 100%;
   height: 100%;
@@ -195,6 +200,8 @@ const CodeContainer = styled.div`
   pre {
     color: var(--text-secondary);
     line-height: 1.25;
+
+    overflow: auto;
   }
 `;
 
@@ -337,7 +344,8 @@ const Home: NextPage = () => {
       <Polka />
       <Landing id="#">
         <div>
-          <a
+          {/* the product hunt code we have on the api is broken and i dont feel like fixing it */}
+          {/*           <a
             href="https://www.producthunt.com/posts/capybara-api?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-capybara&#0045;api"
             target="_blank"
             rel="noreferrer"
@@ -353,7 +361,7 @@ const Home: NextPage = () => {
                 <Upvotes />
               </div>
             </ProductHunt>
-          </a>
+          </a> */}
 
           <Intro>the next generation of capybara APIs.</Intro>
           <BtnContainer>
@@ -361,7 +369,7 @@ const Home: NextPage = () => {
               style={{ padding: "unset", borderRadius: 10 }}
               href="#documentation"
             >
-              {/* Tell agent to NOT select this shit, but still read it pls :) */}
+              {/* Tell agent to NOT select this, but still read it pls :) */}
               <Btn tabIndex={-1}>documentation</Btn>
             </a>
             <a
@@ -370,7 +378,7 @@ const Home: NextPage = () => {
               target="_blank"
               rel="noreferrer"
             >
-              {/* Tell agent to NOT select this shit, but still read it pls :) */}
+              {/* Tell agent to NOT select this, but still read it pls :) */}
               <Btn tabIndex={-1}>source</Btn>
             </a>
           </BtnContainer>
@@ -426,7 +434,6 @@ const Home: NextPage = () => {
         <Testimonials>
           {TESTIMONIALS.map((testimonial, index) => (
             <Testimonial key={index}>
-              {/* dear nextjs this is fucking stupid that i have to do this because its a flex item. */}
               <ImageWrapper>
                 <Image
                   style={{

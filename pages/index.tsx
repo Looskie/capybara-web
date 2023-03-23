@@ -664,7 +664,11 @@ const Home: NextPage = () => {
           <span>
             GET a fact about capybaras! (theres only a few for now... :(, but
             you can{" "}
-            <a href={GITHUB_API_REPO + "/blob/main/utils/facts.go"}>
+            <a
+              href={GITHUB_API_REPO + "/blob/main/utils/facts.go"}
+              target="_blank"
+              rel="noreferrer"
+            >
               contribute!
             </a>
             )

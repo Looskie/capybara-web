@@ -7,7 +7,12 @@ import { toast } from "react-toastify";
 import styled from "styled-components";
 import { BuildingIcon } from "../components/Icons";
 import Navbar from "../components/Navbar";
-import { BASE_API_V1, GITHUB_API_REPO, TESTIMONIALS } from "../utils/Consts";
+import {
+  BASE_API_V1,
+  GITHUB_API_REPO,
+  GITHUB_REPO,
+  TESTIMONIALS,
+} from "../utils/Consts";
 
 const Wrapper = styled.div`
   display: flex;
@@ -185,7 +190,6 @@ const CodeContainer = styled.div`
   border-radius: 10px;
   padding: 10px;
   border: 2px solid rgb(0 0 0 / 12%);
-  overflow: hidden;
 
   width: 100%;
   height: 100%;
@@ -383,7 +387,7 @@ const Home: NextPage = () => {
           </BtnContainer>
         </div>
         <div>
-          <CodeContainer>
+          <CodeContainer style={{ overflow: "unset" }}>
             <div style={{ overflow: "auto" }}>
               <pre>
                 {`~ curl 'https://api.capy.lol/v1/capybara?json=true' \\
@@ -657,7 +661,14 @@ const Home: NextPage = () => {
         </Request>
         <Request>
           <SubHeader>GET v1/fact</SubHeader>
-          <span>GET a fact about capybaras!</span>
+          <span>
+            GET a fact about capybaras! (theres only a few for now... :(, but
+            you can{" "}
+            <a href={GITHUB_API_REPO + "/blob/main/utils/facts.go"}>
+              contribute!
+            </a>
+            )
+          </span>
           <CodeContainer>
             <pre>
               <span>GET </span>

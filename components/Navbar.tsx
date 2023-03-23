@@ -47,8 +47,8 @@ const StyledLinks = styled.ul`
   flex: 1;
 
   li {
-    transition: 0.15s ease-in-out;
     color: var(--text-muted);
+    transition: 0.15s ease-in-out;
 
     &:hover {
       color: var(--text-secondary);

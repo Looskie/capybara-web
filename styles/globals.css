@@ -91,3 +91,12 @@ a {
     font-size: 14px;
   }
 }
+
+a {
+  color: var(--text-muted);
+  transition: 0.15s ease-in-out;
+}
+
+a:hover {
+  color: var(--text-secondary);
+}

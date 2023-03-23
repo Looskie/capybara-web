@@ -1,14 +1,13 @@
-import styled from "styled-components";
 import type { NextPage } from "next";
-import Navbar from "../components/Navbar";
-import Marquee from "react-fast-marquee";
-import { BASE_API_V1, GITHUB_API_REPO, TESTIMONIALS } from "../utils/Consts";
+import Head from "next/head";
 import Image from "next/image";
 import CopyToClipboard from "react-copy-to-clipboard";
+import Marquee from "react-fast-marquee";
 import { toast } from "react-toastify";
-import Head from "next/head";
-import { BuildingIcon, ProductHuntIcon, UpIcon } from "../components/Icons";
-import { Upvotes } from "../components/Upvotes";
+import styled from "styled-components";
+import { BuildingIcon } from "../components/Icons";
+import Navbar from "../components/Navbar";
+import { BASE_API_V1, GITHUB_API_REPO, TESTIMONIALS } from "../utils/Consts";
 
 const Wrapper = styled.div`
   display: flex;
@@ -652,6 +651,80 @@ const Home: NextPage = () => {
           <CopyToClipboard
             onCopy={() => toast("Copied", { type: "success" })}
             text={`curl ${BASE_API_V1}/capyhour?json=true`}
+          >
+            <TextBtn>Copy cURL</TextBtn>
+          </CopyToClipboard>
+        </Request>
+        <Request>
+          <SubHeader>GET v1/fact</SubHeader>
+          <span>GET a fact about capybaras!</span>
+          <CodeContainer>
+            <pre>
+              <span>GET </span>
+              <code>{BASE_API_V1}/fact</code>
+            </pre>
+          </CodeContainer>
+          <CopyToClipboard
+            onCopy={() => toast("Copied", { type: "success" })}
+            text={`curl ${BASE_API_V1}/fact`}
+          >
+            <TextBtn>Copy cURL</TextBtn>
+          </CopyToClipboard>
+        </Request>
+        <Request>
+          <SubHeader>GET v1/facts</SubHeader>
+          <span>GET many facts about capybaras!</span>
+          <CodeContainer>
+            <pre>
+              <span>GET </span>
+              <code>{BASE_API_V1}/facts</code>
+            </pre>
+          </CodeContainer>
+          <CopyToClipboard
+            onCopy={() => toast("Copied", { type: "success" })}
+            text={`curl ${BASE_API_V1}/facts`}
+          >
+            <TextBtn>Copy cURL</TextBtn>
+          </CopyToClipboard>
+          <br />
+          <span>With from parameter...</span>
+          <CodeContainer>
+            <pre>
+              <span>GET </span>
+              <code>{BASE_API_V1}/facts?from=10</code>
+            </pre>
+          </CodeContainer>
+          <CopyToClipboard
+            onCopy={() => toast("Copied", { type: "success" })}
+            text={`curl ${BASE_API_V1}/facts?from=10`}
+          >
+            <TextBtn>Copy cURL</TextBtn>
+          </CopyToClipboard>
+          <br />
+          <span>With take parameter...</span>
+          <CodeContainer>
+            <pre>
+              <span>GET </span>
+              <code>{BASE_API_V1}/facts?take=5</code>
+            </pre>
+          </CodeContainer>
+          <CopyToClipboard
+            onCopy={() => toast("Copied", { type: "success" })}
+            text={`curl ${BASE_API_V1}/facts?take=5`}
+          >
+            <TextBtn>Copy cURL</TextBtn>
+          </CopyToClipboard>
+          <br />
+          <span>With take and from parameter...</span>
+          <CodeContainer>
+            <pre>
+              <span>GET </span>
+              <code>{BASE_API_V1}/facts?from=5&take=10</code>
+            </pre>
+          </CodeContainer>
+          <CopyToClipboard
+            onCopy={() => toast("Copied", { type: "success" })}
+            text={`curl ${BASE_API_V1}/facts?from=5&take=10`}
           >
             <TextBtn>Copy cURL</TextBtn>
           </CopyToClipboard>

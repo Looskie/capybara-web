@@ -102,5 +102,11 @@ after Capybara api: :ChocolaPOGGERS:`,
     name: "Nicholas",
     pfp: "/img/nick.png",
     worksAt: "Strip club"
+  },
+{
+    message: "capys be cappin",
+    name: "jorm",
+    pfp: "/img/jorm.jpeg",
+    worksAt: "uwu factory"
   }
 ];

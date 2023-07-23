@@ -1,31 +1,44 @@
 import type { NextPage } from "next";
-import styled from "styled-components";
-import Navbar from "../components/Navbar";
+import Head from "next/head";
+import Image from "next/image";
+import CopyToClipboard from "react-copy-to-clipboard";
 import Marquee from "react-fast-marquee";
+import { toast } from "react-toastify";
+import styled from "styled-components";
+import { BuildingIcon } from "../components/Icons";
+import Navbar from "../components/Navbar";
 import {
   BASE_API_V1,
   GITHUB_API_REPO,
   GITHUB_REPO,
   TESTIMONIALS,
 } from "../utils/Consts";
-import Image from "next/image";
-import CopyToClipboard from "react-copy-to-clipboard";
-import { toast } from "react-toastify";
-import Head from "next/head";
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 0 10%;
   height: 100%;
+`;
+
+const Polka = styled.div`
+  background: linear-gradient(transparent, var(--bg-primary)),
+    url("/polka-dots.svg");
+  position: absolute;
+  inset: 0;
+  height: 500px;
+  z-index: 1;
 `;
 
 const Landing = styled.div`
   display: flex;
   align-items: center;
-  height: calc(90vh - 60px);
+
   width: 100%;
-  margin-top: 60px; /* The height of the nav */
+  max-width: 1300px;
+  margin: 0 auto;
+
+  padding: 8rem 2rem;
+  z-index: 2;
 
   > div {
     display: flex;
@@ -34,17 +47,61 @@ const Landing = styled.div`
 
     &:nth-child(2) {
       @media (max-width: 1120px) {
-        display: none;
+        display: none; // sneaky ;)
       }
     }
   }
 `;
 
+const ProductHunt = styled.div`
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  background: #da552f;
+  width: fit-content;
+  border-radius: 12px;
+  color: white;
+  div {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.25em;
+    margin-left: 15px;
+    font-weight: 500;
+    span {
+      font-size: 0.65em;
+      opacity: 0.75;
+      position: relative;
+    }
+
+    &:nth-of-type(2) {
+      align-items: center;
+      justify-content: center;
+      align-self: center;
+      font-size: 1.15em;
+      svg {
+        width: 1.25em;
+        height: 1.25em;
+        position: relative;
+        margin: -5px 0;
+      }
+    }
+  }
+  svg {
+    width: 3em;
+    height: 3em;
+  }
+`;
+
 const Intro = styled.h1`
   max-width: 13ch;
-  font-size: 3em;
-  font-weight: bold;
+  font-size: 3.85em; // big text = attention
+  font-weight: 800;
   line-height: 1.35;
+  margin-top: 20px;
+
+  @media (max-width: 550px) {
+    font-size: 2em;
+  }
 `;
 
 const SubHeader = styled.h2`
@@ -57,8 +114,8 @@ const SubHeader = styled.h2`
 
 const BtnContainer = styled.div`
   display: flex;
-  gap: 10px;
-  margin-top: 10px;
+  gap: 20px;
+  margin-top: 30px;
   align-self: flex-start;
 `;
 
@@ -71,13 +128,13 @@ const Btn = styled.button`
   background: var(--bg-secondary);
   opacity: 0.75;
   cursor: pointer;
-  box-shadow: 0px 0px 8px rgb(0 0 0 / 5%);
+  border: 2px solid rgb(0 0 0 / 5%);
 
   transition: all 0.15s ease-in-out;
 
   &:hover {
     opacity: 1;
-    box-shadow: 0px 0px 8px rgb(0 0 0 / 12%);
+    border: 2px solid rgb(0 0 0 / 12%);
   }
 `;
 
@@ -111,7 +168,8 @@ const CodeContainerBtn = styled.button`
   background: var(--bg-tertiary);
   opacity: 0.9;
   cursor: pointer;
-  box-shadow: 0px 0px 8px rgb(0 0 0 / 5%);
+  border: 2px solid rgb(0 0 0 / 12%);
+
   align-self: flex-end;
   margin-top: -15px;
 
@@ -131,10 +189,11 @@ const CodeContainer = styled.div`
   background: var(--bg-secondary);
   border-radius: 10px;
   padding: 10px;
-  box-shadow: 0px 0px 8px rgb(0 0 0 / 12%);
+  border: 2px solid rgb(0 0 0 / 12%);
+
   width: 100%;
   height: 100%;
-  max-width: 500px;
+  max-width: 550px;
 
   span {
     user-select: none;
@@ -144,58 +203,89 @@ const CodeContainer = styled.div`
   pre {
     color: var(--text-secondary);
     line-height: 1.25;
+
+    overflow: auto;
   }
 `;
 
 const Testimonials = styled.div`
   width: 100%;
   display: flex;
-  gap: 20px;
+  gap: 50px;
+
+  padding: 5rem 0;
 `;
 
 const Testimonial = styled.div`
   display: flex;
-  width: 400px;
+  min-width: 400px;
+  max-width: 400px;
   background: var(--bg-secondary);
-  padding: 12px;
-  border-radius: 12px;
-  box-shadow: 0px 0px 8px rgb(0 0 0 / 12%);
+  padding: 15px;
+  border-radius: 18px;
+  border: 2px solid rgb(0 0 0 / 12%);
+  padding-top: 50px;
+  position: relative;
 
   &:first-of-type {
-    margin-left: 20px;
+    margin-left: 50px;
   }
 
   > div {
     > div {
       p {
         line-height: 1;
-        margin: 5px 0;
+        margin-bottom: 8px;
         color: var(--text-primary);
-
+        font-size: 1.2em;
         span {
-          font-size: 0.9em;
+          display: flex;
+          align-items: center;
+          font-size: 0.85em;
           color: var(--text-secondary);
+          margin-top: 5px;
+          opacity: 0.75;
+          svg {
+            width: 1.2em;
+            height: 1.2em;
+            margin-right: 5px;
+          }
         }
       }
     }
     > p {
-      margin-top: 2px;
+      margin-top: 5px;
       line-height: 1;
       font-weight: 400;
       color: var(--text-secondary);
+      font-size: 1.15em;
+      line-height: 115%;
     }
   }
 `;
 
 const ImageWrapper = styled.div`
-  display: block;
-  margin-right: 10px;
+  margin-right: 15px;
+
+  position: absolute;
+  top: -28px;
+
+  left: 14px;
+  span {
+    border: 2px solid rgb(0 0 0 / 35%) !important;
+    border-radius: 18px;
+  }
 `;
 
 const DocumentationWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 150px 0;
+
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+
+  padding: 6rem 2rem;
 
   h1 {
     margin-bottom: 50px;
@@ -203,9 +293,12 @@ const DocumentationWrapper = styled.div`
 `;
 
 const Request = styled.div`
+  margin-bottom: 50px;
   > span {
     font-weight: 600;
     color: var(--text-secondary);
+    padding: 5px 0;
+    display: block;
   }
 
   > * {
@@ -223,7 +316,7 @@ const Home: NextPage = () => {
         <meta property="og:title" content="Capybara API" />
         <meta
           property="og:description"
-          content="The next generation of capybara APIs, access over 700+ images of capybaras in high definition in under < 40ms."
+          content="The next generation of capybara APIs, access over 700+ images of capybaras in high definition."
         />
         <meta name="twitter:creator" content="@devlooskie" />
 
@@ -249,28 +342,37 @@ const Home: NextPage = () => {
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#E9E2D8" />
       </Head>
+
       <Navbar />
+      <Polka />
       <Landing id="#">
         <div>
-          <a
-            href="https://www.producthunt.com/posts/capybara-api?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-capybara-api"
+          {/* the product hunt code we have on the api is broken and i dont feel like fixing it */}
+          {/*           <a
+            href="https://www.producthunt.com/posts/capybara-api?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-capybara&#0045;api"
             target="_blank"
             rel="noreferrer"
-            style={{ padding: 0 }}
+            style={{ width: "fit-content", padding: 0, borderRadius: 11.125 }}
           >
-            <img
-              src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=352204&theme=light"
-              alt="Capybara API - Cute, fast, and open source capybara API | Product Hunt"
-              style={{ width: 190, height: "auto" }}
-            />
-          </a>
+            <ProductHunt>
+              <ProductHuntIcon />{" "}
+              <div>
+                <span>FIND US ON</span>Product Hunt
+              </div>
+              <div>
+                <UpIcon />
+                <Upvotes />
+              </div>
+            </ProductHunt>
+          </a> */}
+
           <Intro>the next generation of capybara APIs.</Intro>
           <BtnContainer>
             <a
               style={{ padding: "unset", borderRadius: 10 }}
               href="#documentation"
             >
-              {/* Tell agent to NOT select this shit, but still read it pls :) */}
+              {/* Tell agent to NOT select this, but still read it pls :) */}
               <Btn tabIndex={-1}>documentation</Btn>
             </a>
             <a
@@ -279,13 +381,13 @@ const Home: NextPage = () => {
               target="_blank"
               rel="noreferrer"
             >
-              {/* Tell agent to NOT select this shit, but still read it pls :) */}
+              {/* Tell agent to NOT select this, but still read it pls :) */}
               <Btn tabIndex={-1}>source</Btn>
             </a>
           </BtnContainer>
         </div>
         <div>
-          <CodeContainer>
+          <CodeContainer style={{ overflow: "unset" }}>
             <div style={{ overflow: "auto" }}>
               <pre>
                 {`~ curl 'https://api.capy.lol/v1/capybara?json=true' \\
@@ -335,12 +437,13 @@ const Home: NextPage = () => {
         <Testimonials>
           {TESTIMONIALS.map((testimonial, index) => (
             <Testimonial key={index}>
-              {/* dear nextjs this is fucking stupid that i have to do this because its a flex item. */}
               <ImageWrapper>
                 <Image
-                  style={{ borderRadius: "50%" }}
-                  width={50}
-                  height={50}
+                  style={{
+                    borderRadius: "0",
+                  }}
+                  width={65}
+                  height={65}
                   layout="fixed"
                   draggable={false}
                   src={testimonial.pfp}
@@ -350,7 +453,10 @@ const Home: NextPage = () => {
               <div>
                 <div>
                   <p>
-                    {testimonial.name} <span>@ {testimonial.worksAt}</span>
+                    {testimonial.name}{" "}
+                    <span>
+                      <BuildingIcon /> {testimonial.worksAt}
+                    </span>
                   </p>
                 </div>
                 <p>{testimonial.message}</p>
@@ -489,6 +595,151 @@ const Home: NextPage = () => {
           <CopyToClipboard
             onCopy={() => toast("Copied", { type: "success" })}
             text={`curl ${BASE_API_V1}/capybaras?from=50&take=10`}
+          >
+            <TextBtn>Copy cURL</TextBtn>
+          </CopyToClipboard>
+        </Request>
+        <Request>
+          <SubHeader>GET v1/capyoftheday</SubHeader>
+          <span>GET the capy of the day! (refreshes every 24hrs)</span>
+          <CodeContainer>
+            <pre>
+              <span>GET </span>
+              <code>{BASE_API_V1}/capyoftheday</code>
+            </pre>
+          </CodeContainer>
+          <CopyToClipboard
+            onCopy={() => toast("Copied", { type: "success" })}
+            text={`curl ${BASE_API_V1}/capyoftheday --output ./capyoftheday.jpeg`}
+          >
+            <TextBtn>Copy cURL</TextBtn>
+          </CopyToClipboard>
+          <br />
+          <span>For JSON format...</span>
+          <CodeContainer>
+            <pre>
+              <span>GET </span>
+              <code>{BASE_API_V1}/capyoftheday?json=true</code>
+            </pre>
+          </CodeContainer>
+          <CopyToClipboard
+            onCopy={() => toast("Copied", { type: "success" })}
+            text={`curl ${BASE_API_V1}/capyoftheday?json=true`}
+          >
+            <TextBtn>Copy cURL</TextBtn>
+          </CopyToClipboard>
+        </Request>
+        <Request>
+          <SubHeader>GET v1/capyhour</SubHeader>
+          <span>GET the capy of the hour! (refreshes every hour)</span>
+          <CodeContainer>
+            <pre>
+              <span>GET </span>
+              <code>{BASE_API_V1}/capyhour</code>
+            </pre>
+          </CodeContainer>
+          <CopyToClipboard
+            onCopy={() => toast("Copied", { type: "success" })}
+            text={`curl ${BASE_API_V1}/capyhour --output ./capyhour.jpeg`}
+          >
+            <TextBtn>Copy cURL</TextBtn>
+          </CopyToClipboard>
+          <br />
+          <span>For JSON format...</span>
+          <CodeContainer>
+            <pre>
+              <span>GET </span>
+              <code>{BASE_API_V1}/capyhour?json=true</code>
+            </pre>
+          </CodeContainer>
+          <CopyToClipboard
+            onCopy={() => toast("Copied", { type: "success" })}
+            text={`curl ${BASE_API_V1}/capyhour?json=true`}
+          >
+            <TextBtn>Copy cURL</TextBtn>
+          </CopyToClipboard>
+        </Request>
+        <Request>
+          <SubHeader>GET v1/fact</SubHeader>
+          <span>
+            GET a fact about capybaras! (theres only a few for now... :(, but
+            you can{" "}
+            <a
+              href={GITHUB_API_REPO + "/blob/main/utils/facts.go"}
+              target="_blank"
+              rel="noreferrer"
+            >
+              contribute!
+            </a>
+            )
+          </span>
+          <CodeContainer>
+            <pre>
+              <span>GET </span>
+              <code>{BASE_API_V1}/fact</code>
+            </pre>
+          </CodeContainer>
+          <CopyToClipboard
+            onCopy={() => toast("Copied", { type: "success" })}
+            text={`curl ${BASE_API_V1}/fact`}
+          >
+            <TextBtn>Copy cURL</TextBtn>
+          </CopyToClipboard>
+        </Request>
+        <Request>
+          <SubHeader>GET v1/facts</SubHeader>
+          <span>GET many facts about capybaras!</span>
+          <CodeContainer>
+            <pre>
+              <span>GET </span>
+              <code>{BASE_API_V1}/facts</code>
+            </pre>
+          </CodeContainer>
+          <CopyToClipboard
+            onCopy={() => toast("Copied", { type: "success" })}
+            text={`curl ${BASE_API_V1}/facts`}
+          >
+            <TextBtn>Copy cURL</TextBtn>
+          </CopyToClipboard>
+          <br />
+          <span>With from parameter...</span>
+          <CodeContainer>
+            <pre>
+              <span>GET </span>
+              <code>{BASE_API_V1}/facts?from=10</code>
+            </pre>
+          </CodeContainer>
+          <CopyToClipboard
+            onCopy={() => toast("Copied", { type: "success" })}
+            text={`curl ${BASE_API_V1}/facts?from=10`}
+          >
+            <TextBtn>Copy cURL</TextBtn>
+          </CopyToClipboard>
+          <br />
+          <span>With take parameter...</span>
+          <CodeContainer>
+            <pre>
+              <span>GET </span>
+              <code>{BASE_API_V1}/facts?take=5</code>
+            </pre>
+          </CodeContainer>
+          <CopyToClipboard
+            onCopy={() => toast("Copied", { type: "success" })}
+            text={`curl ${BASE_API_V1}/facts?take=5`}
+          >
+            <TextBtn>Copy cURL</TextBtn>
+          </CopyToClipboard>
+          <br />
+          <span>With take and from parameter...</span>
+          <CodeContainer>
+            <pre>
+              <span>GET </span>
+              <code>{BASE_API_V1}/facts?from=5&take=10</code>
+            </pre>
+          </CodeContainer>
+          <CopyToClipboard
+            onCopy={() => toast("Copied", { type: "success" })}
+            text={`curl ${BASE_API_V1}/facts?from=5&take=10`}
           >
             <TextBtn>Copy cURL</TextBtn>
           </CopyToClipboard>

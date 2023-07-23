@@ -3,19 +3,31 @@ import { GITHUB_REPO, TWITTER } from "../utils/Consts";
 import { GitHubIcon, TwitterIcon } from "./Icons";
 
 const Container = styled.div`
-  display: flex;
-  width: 100vw;
-  align-items: center;
-  position: fixed;
-  align-self: center;
-  height: 60px;
-  padding: 0 10%;
+  position: sticky;
   top: 0;
-  left: 0;
-  font-size: 1.15em;
+
   background: hsl(35, 31%, 88%, 80%);
-  backdrop-filter: blur(3px);
-  z-index: 100;
+  backdrop-filter: blur(8px);
+  z-index: 999;
+  width: 100%;
+
+  max-width: 100vw;
+  overflow-x: hidden;
+
+  border-bottom: 2px solid rgb(0 0 0 / 5%);
+`;
+
+const InnerNav = styled.div`
+  display: flex;
+  align-items: center;
+  align-self: center;
+  font-size: 1.15em;
+
+  padding: 1.25rem 2rem;
+
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
 `;
 
 const Title = styled.h1`
@@ -23,34 +35,39 @@ const Title = styled.h1`
   font-size: 1.25em;
   font-weight: bold;
   color: var(--text-secondary);
+  margin-right: 20px;
 `;
 
 const StyledLinks = styled.ul`
   display: flex;
-  gap: 10px;
+  gap: 20px;
   list-style: none;
   font-weight: 900;
   margin-left: 20px;
   flex: 1;
 
   li {
-    transition: 0.15s ease-in-out;
     color: var(--text-muted);
+    transition: 0.15s ease-in-out;
 
     &:hover {
       color: var(--text-secondary);
     }
   }
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const Socials = styled.div`
   display: flex;
-  gap: 10px;
-  justify-self: right;
+  gap: 20px;
+  margin-left: auto;
 
   svg {
     display: block;
-    height: 25px;
+    height: 30px;
     color: var(--text-muted);
 
     transition: 0.15s ease-in-out;
@@ -64,29 +81,31 @@ const Socials = styled.div`
 const Navbar = () => {
   return (
     <Container>
-      <Title>capybara</Title>
-      <StyledLinks>
-        <li>
-          <a href="#">home</a>
-        </li>
-        <li>
-          <a href="#documentation">documentation</a>
-        </li>
-        <li>
-          <a href={TWITTER} target="_blank" rel="noreferrer">
-            twitter
-          </a>
-        </li>
-      </StyledLinks>
+      <InnerNav>
+        <Title>capybara</Title>
+        <StyledLinks>
+          <li>
+            <a href="#">home</a>
+          </li>
+          <li>
+            <a href="#documentation">documentation</a>
+          </li>
+          <li>
+            <a href={TWITTER} target="_blank" rel="noreferrer">
+              twitter
+            </a>
+          </li>
+        </StyledLinks>
 
-      <Socials>
-        <a href={GITHUB_REPO} target="_blank" rel="noreferrer">
-          <GitHubIcon />
-        </a>
-        <a href={TWITTER} target="_blank" rel="noreferrer">
-          <TwitterIcon />
-        </a>
-      </Socials>
+        <Socials>
+          <a href={GITHUB_REPO} target="_blank" rel="noreferrer">
+            <GitHubIcon />
+          </a>
+          <a href={TWITTER} target="_blank" rel="noreferrer">
+            <TwitterIcon />
+          </a>
+        </Socials>
+      </InnerNav>
     </Container>
   );
 };

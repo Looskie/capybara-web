@@ -34,13 +34,6 @@ after Capybara api: :ChocolaPOGGERS:`,
     worksAt: "Buildergroop Corporation",
   },
   {
-    message:
-      "man capybara api be bussin yo this mf gon replace your enterprise-grade fancy ass graphql apis. p.s shoutout to my co-founder ari this dude gets it too yo capybara shit eating ritual mad healthy might partake one day.",
-    name: "Aaryaman Maheshwari",
-    worksAt: "Buildergroop Corporation",
-    pfp: "/img/aaryaman.png",
-  },
-  {
     message: "love this capybara api. cant wait to eat it.",
     name: "Bereket Semagn",
     pfp: "/img/bereket.jpeg",
@@ -79,9 +72,40 @@ after Capybara api: :ChocolaPOGGERS:`,
     worksAt: "Southern Produced",
   },
   {
+    message:
+      "The capy.lol API has changed my life. Never before have I been able to get photos of capybaras in such an efficient manner. The implementation is beautiful and allows our application to remain clean inside and out.",
+    name: "haden",
+    pfp: "/img/haden.jpeg",
+    worksAt: "Spacedrive",
+  },
+  {
     message: "whats this",
     name: "Oliver Reason",
     pfp: "/img/oli.jpg",
     worksAt: "Rabbit",
+  },
+  {
+    message: "this api helped me a lot ❤️ ~ cody paid me $10 to say this",
+    name: "funny#8181",
+    pfp: "/img/funny.jpg",
+    worksAt: "BoringHand Inc",
+  },
+  {
+    message: "capybara ".repeat(14),
+    name: "Nicholas",
+    pfp: "/img/nick.png",
+    worksAt: "Strip club"
+  },
+  {
+    message: "capys be cappin",
+    name: "jorm",
+    pfp: "/img/jorm.jpeg",
+    worksAt: "uwu factory"
+  },
+  {
+    message: "best api frfr",
+    name: "shukaaa",
+    pfp: "/img/shukaaa.png",
+    worksAt: "professional meow meow men"
   },
 ];

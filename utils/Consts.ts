@@ -26,6 +26,12 @@ after Capybara api: :ChocolaPOGGERS:`,
     pfp: "/img/roprt.png",
     worksAt: "Milf Hunter",
   },
+    {
+    message: "My lawyer told me to use this",
+    name: "GrilledCapy",
+    pfp: "/img/smon.png",
+    worksAt: "CapyTermination Inc",
+  },
   {
     message:
       "did you know that capypabaras eat their own poop in the morning? unique diet. protein rich. he pull up.",

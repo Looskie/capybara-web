@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@cside.dev/next": "^1.1.0",
     "axios": "^0.27.2",
     "cheerio": "^1.0.0-rc.12",
     "next": "12.2.2",
